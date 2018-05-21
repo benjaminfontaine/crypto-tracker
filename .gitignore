@@ -37,6 +37,8 @@ node_modules/
 jspm_packages/
 .history/
 res/
+input_files/
+divers/
 
 # TypeScript v1 declaration files
 typings/
