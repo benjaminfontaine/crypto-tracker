@@ -212,9 +212,31 @@ class CryptopiaOperation extends Operation {
     }
 }
 
+class PoloniexOperation extends Operation {
+    constructor(dataObject){
+        // console.log(dataObject);
+        let regExp = /^([A-Z]+)\/([A-Z]+)$/;
+        let [,currency1Acronyme, currency2Acronyme] = regExp.exec(dataObject.Market);
+        let isSellOperation = dataObject.Type === 'Sell';
+        let feePercentile = Number(dataObject.Fee.slice(0, -1));
+        let fee = Number(dataObject.Total) * feePercentile;
+        super({
+            opType: isSellOperation ? 'sell':'buy',
+            currency1Acronyme: currency1Acronyme,
+            currency2Acronyme: currency2Acronyme,
+            currency1Amount: Number(dataObject.Amount),
+            currency2Amount: Number(dataObject.Total),
+            date: moment(dataObject.Date),
+            outCurrencyPrice: Number(dataObject.Price),
+            fee: fee,
+            exchange: 'Poloniex'
+        });
+    }
+}
+
 class KucoinOperation extends Operation {
     constructor(dataObject){
-        console.log(dataObject);
+        // console.log(dataObject);
         let regExp = /^([A-Z]+)\/([A-Z]+)$/;
         let [,currency1Acronyme, currency2Acronyme] = regExp.exec(dataObject.Coins);
         let isSellOperation = dataObject['Sell/Buy'] === 'SELL';
@@ -234,8 +256,8 @@ class KucoinOperation extends Operation {
 
 class ManoOperation extends Operation {
     constructor(dataObject){
-        // console.log(dataObject);
-        let regExp = /^([A-Z]+)-([A-Z]+)$/;
+        console.log(dataObject);
+        let regExp = /^([A-Z0-9]+)-([A-Z]+)$/;
         let [,currency1Acronyme, currency2Acronyme] = regExp.exec(dataObject.Market);
         let isSellOperation = dataObject.Type === 'SELL';
         super({
@@ -278,7 +300,9 @@ const converters = [
     {exchange:'coinexchange', constructor : CoinexchangeOperation},
     {exchange:'cryptopia', constructor : CryptopiaOperation},
     {exchange:'kucoin', constructor : KucoinOperation},
+    {exchange:'poloniex', constructor : PoloniexOperation},
     {exchange:'mano', constructor : ManoOperation},
+    {exchange:'ico', constructor : ManoOperation},
 ];
 
 exports.convertToOperations = function(csvOutput, exchange) {

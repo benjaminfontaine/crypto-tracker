@@ -2,10 +2,8 @@ const csvConverter = require("csv-parse/lib/sync");
 const fs = require("fs");
 const moment = require("moment");
 moment.locale("fr");
-const request = require("request");
 const _ = require("lodash");
 const Operation = require("./operation");
-const currencies = require("./currencies");
 const inputFolder = "./input_files";
 const path = require("path");
 const nomCsv = 'operations.csv';
@@ -25,6 +23,7 @@ function loadAllOperations(files) {
     let allOperations = [];
     files.forEach(file => {
       if (file !== ".DS_Store") {
+        console.log('Traitement du fichier'+ file);
         let operations = loadOperationsInFile(inputFolder + "/" + file);
         allOperations.push(...operations);
       }

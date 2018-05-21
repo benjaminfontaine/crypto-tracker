@@ -53,14 +53,29 @@ const oysterPearl = new Currency('OysterPearl', 'PRL', ['']);
 const kucoinShares = new Currency('KucoinShares', 'KCS', ['']);
 const oysterShell = new Currency('OysterShell', 'SHL', ['']);
 const zilliqa = new Currency('Zilliqa', 'ZIL', ['']);
-const dragonChain = new Currency('DragonChain', 'DRGN', ['']);;
+const dragonChain = new Currency('DragonChain', 'DRGN', ['']);
+const primeCoin = new Currency('PrimeCoin', 'XPM', ['']);
+const pascalCoin = new Currency('Pascalcoin', 'PASC', ['']);
+const nem = new Currency('Nem', 'XEM', ['']);
+const bitcoinCash = new Currency('BitcoinCash', 'BCH', ['']);
+const metalFake = new Currency('MetalFake', 'METAL', ['']);
+const noLimitCoin = new Currency('NoLimitCoin', 'NLC2', ['']);
+const excudo = new Currency('Excudo', 'EXC', ['']);
+const aeternity = new Currency('Aeternity', 'AE', ['']);
+const bancor = new Currency('Bancor', 'BNT', ['']);
+const skincoin = new Currency('Skincoin', 'SKIN', ['']);
+const tezos = new Currency('Tezos', 'TEZOS', ['']);
+const agrello = new Currency('Agrello', 'DLT', ['']);
+const ongSocial = new Currency('ONGSocial', 'ONG', ['']);
 
 const currencies = [bitcoin, euro, dash, ether, ripple, lumens, litecoin, zcash
 ,lisk, qtum, neo, civic, enigma, stratis, adex, omiseGo, pay, cardano, rise, ark, 
 patientory, komodo, viacoin, icon, venchain, genesisVision, 
 appCoin, substratum, monetha, decentNetwork, powerledger,
 binanceCoin, chainlink, waltonChain, iota, ethos, phore, nano, 
-oysterPearl, kucoinShares, oysterShell, zilliqa, dragonChain ];
+oysterPearl, kucoinShares, oysterShell, zilliqa, dragonChain, 
+primeCoin, pascalCoin, nem, bitcoinCash, metalFake, noLimitCoin,
+excudo, aeternity, bancor, skincoin, tezos, agrello, ongSocial  ];
 
 
 exports.getCurrencyByAcronym = (acronym) => {
